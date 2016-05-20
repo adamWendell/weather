@@ -1,10 +1,33 @@
 import React, { PropTypes } from 'react'
 import {connect} from 'react-redux'
+import Chart from '../components/Chart'
+
 
 
 class WeatherList extends React.Component {
+  renderWeather(cityData) {
+    const name = cityData.city.name
+    const temp = cityData.list.map(weather => weather.main.temp)
+    const pressure = cityData.list.map(weather => weather.main.pressure)
+    const humidity = cityData.list.map(weather => weather.main.humidity)
+    return (
+      <tr key={name}>
+        <td>{name} </td>
+        <td>
+          <Chart data={temp} color={'blue'} />
+        </td>
+        <td>
+          <Chart data={pressure} color={'green'} />
+          
+        </td>
+        <td>
+          <Chart data={humidity} color={'orange'} />
+        
+        </td>
+      </tr>
+    )
+  }
   render () {
-        if(this.props.weather)  this.props.weather.map(i => console.log(i.list))
     return (
       <table className='table table-hover' >
         <thead>
@@ -16,6 +39,7 @@ class WeatherList extends React.Component {
           </tr>
         </thead>
         <tbody>
+          {this.props.weather.map(this.renderWeather)}
         </tbody>
       </table>
     )
