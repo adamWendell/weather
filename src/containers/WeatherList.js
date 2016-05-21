@@ -13,17 +13,9 @@ class WeatherList extends React.Component {
     return (
       <tr key={name}>
         <td>{name} </td>
-        <td>
-          <Chart data={temp} color={'blue'} />
-        </td>
-        <td>
-          <Chart data={pressure} color={'green'} />
-          
-        </td>
-        <td>
-          <Chart data={humidity} color={'orange'} />
-        
-        </td>
+        <td> <Chart data={temp} color={'blue'} units={'K'} /> </td>
+        <td> <Chart data={pressure} color={'green'} units={'hPa'} /> </td>
+        <td> <Chart data={humidity} color={'orange'} units={'%'} /> </td>
       </tr>
     )
   }
@@ -33,9 +25,9 @@ class WeatherList extends React.Component {
         <thead>
           <tr>
             <th>City</th>
-            <th>Temprature</th>
-            <th>Pressure</th>
-            <th>Humidity</th>
+            <th>Temprature (C)</th>
+            <th>Pressure (hPa)</th>
+            <th>Humidity (%)</th>
           </tr>
         </thead>
         <tbody>
